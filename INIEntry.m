@@ -45,10 +45,10 @@
   type = INIEntryTypeOther;
   
   if (line) {
-    int n = line.length;
-    int j;
+    NSUInteger n = line.length;
+    NSUInteger j;
     char state = ' ';
-    for (int i = 0; i < n; i++) {
+    for (NSUInteger i = 0; i < n; i++) {
       switch (state) {
           
         // Whitespace at the beginning of line or initial state

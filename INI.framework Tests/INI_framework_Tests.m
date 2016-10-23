@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "INI.h"
 
 @interface INI_framework_Tests : XCTestCase
 
@@ -24,16 +25,55 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testINIEntry_EntryWithLine_KeyAndValue {
+	INIEntry *entry = [INIEntry entryWithLine: @"  username  \t=  mirek  "];
+	
+	XCTAssertEqualObjects(entry.key, @"username");
+	XCTAssertEqualObjects(entry.value, @"mirek");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 8);
+
+	XCTAssertEqual(entry.info.value.location, 16);
+	XCTAssertEqual(entry.info.value.length, 5);
+
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testINIEntry_EntryWithLine_KeyOnly {
+	INIEntry *entry = [INIEntry entryWithLine: @"  username  \t="];
+	
+	XCTAssertEqualObjects(entry.key, @"username");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"");
+
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 8);
+	
+	XCTAssertEqual(entry.info.value.location, 14);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+}
+
+- (void)testINIEntry_EntryWithLine_Section {
+	INIEntry *entry = [INIEntry entryWithLine: @" [section] "];
+	
+	XCTAssertEqualObjects(entry.key, @"");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"section");
+
+	XCTAssertEqual(entry.info.key.location, 0);
+	XCTAssertEqual(entry.info.key.length, 0);
+	
+	XCTAssertEqual(entry.info.value.location, 0);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 2);
+	XCTAssertEqual(entry.info.section.length, 7);
 }
 
 @end

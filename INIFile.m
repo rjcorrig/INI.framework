@@ -58,7 +58,7 @@
 
 - (NSIndexSet *) sectionIndexes {
   return [self.entries indexesOfObjectsPassingTest: ^(id entry, NSUInteger index, BOOL *stop) {
-    return (BOOL)((INIEntry *)[entry entryType] == INIEntryTypeSection);
+    return (BOOL)((INIEntry *)[entry type] == INIEntryTypeSection);
   }];
 }
 

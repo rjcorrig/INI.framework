@@ -35,4 +35,38 @@
 	XCTAssertNil(err);
 	XCTAssertEqual([[config entries] count], 10);
 }
+
+- (void)testINIFile_sections {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	XCTAssertEqual([[config sections] count], 2);
+}
+
+- (void)testINIFile_valueForKey {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	XCTAssertEqualObjects([config valueForKey:@"name"], @"Mirek Rusin");
+}
+
+- (void)testINIFile_valueForKey_InSection {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	XCTAssertEqualObjects([config valueForKey:@"name" inSection:@"user"], @"Mirek Rusin");
+}
+
 @end

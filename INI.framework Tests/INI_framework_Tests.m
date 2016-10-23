@@ -26,8 +26,10 @@
 }
 
 - (void)testINIEntry_EntryWithLine_KeyAndValue {
-	INIEntry *entry = [INIEntry entryWithLine: @"  username  \t=  mirek  "];
+	NSString *line = @"  username  \t=  mirek  ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
 	
+	XCTAssertEqualObjects(entry.line, line);
 	XCTAssertEqualObjects(entry.key, @"username");
 	XCTAssertEqualObjects(entry.value, @"mirek");
 	XCTAssertEqualObjects(entry.section, @"");
@@ -45,8 +47,10 @@
 }
 
 - (void)testINIEntry_EntryWithLine_KeyOnly {
-	INIEntry *entry = [INIEntry entryWithLine: @"  username  \t="];
+	NSString *line = @"  username  \t=";
+	INIEntry *entry = [INIEntry entryWithLine: line];
 	
+	XCTAssertEqualObjects(entry.line, line);
 	XCTAssertEqualObjects(entry.key, @"username");
 	XCTAssertEqualObjects(entry.value, @"");
 	XCTAssertEqualObjects(entry.section, @"");
@@ -64,8 +68,10 @@
 }
 
 - (void)testINIEntry_EntryWithLine_Section {
-	INIEntry *entry = [INIEntry entryWithLine: @" [section] "];
+	NSString *line = @" [section] ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
 	
+	XCTAssertEqualObjects(entry.line, line);
 	XCTAssertEqualObjects(entry.key, @"");
 	XCTAssertEqualObjects(entry.value, @"");
 	XCTAssertEqualObjects(entry.section, @"section");
@@ -83,8 +89,10 @@
 }
 
 - (void)testINIEntry_EntryWithLine_Comment {
-	INIEntry *entry = [INIEntry entryWithLine: @"# [section] "];
+	NSString *line = @"# [section] ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
 	
+	XCTAssertEqualObjects(entry.line, line);
 	XCTAssertEqualObjects(entry.key, @"");
 	XCTAssertEqualObjects(entry.value, @"");
 	XCTAssertEqualObjects(entry.section, @"");
@@ -102,8 +110,10 @@
 }
 
 - (void)testINIEntry_EntryWithLine_Blank {
-	INIEntry *entry = [INIEntry entryWithLine: @""];
+	NSString *line = @"";
+	INIEntry *entry = [INIEntry entryWithLine: line];
 	
+	XCTAssertEqualObjects(entry.line, line);
 	XCTAssertEqualObjects(entry.key, @"");
 	XCTAssertEqualObjects(entry.value, @"");
 	XCTAssertEqualObjects(entry.section, @"");

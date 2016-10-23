@@ -44,7 +44,7 @@
   info.value = NSMakeRange(0, 0);
   type = INIEntryTypeOther;
   
-  if (line) {
+  if ([[line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]) {
     NSUInteger n = line.length;
     NSUInteger j;
     char state = ' ';

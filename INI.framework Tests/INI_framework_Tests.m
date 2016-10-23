@@ -40,6 +40,8 @@
 
 	XCTAssertEqual(entry.info.section.location, 0);
 	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
 }
 
 - (void)testINIEntry_EntryWithLine_KeyOnly {
@@ -57,6 +59,8 @@
 	
 	XCTAssertEqual(entry.info.section.location, 0);
 	XCTAssertEqual(entry.info.section.length, 0);
+
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
 }
 
 - (void)testINIEntry_EntryWithLine_Section {
@@ -74,6 +78,46 @@
 	
 	XCTAssertEqual(entry.info.section.location, 2);
 	XCTAssertEqual(entry.info.section.length, 7);
+
+	XCTAssertEqual(entry.type, INIEntryTypeSection);
+}
+
+- (void)testINIEntry_EntryWithLine_Comment {
+	INIEntry *entry = [INIEntry entryWithLine: @"# [section] "];
+	
+	XCTAssertEqualObjects(entry.key, @"");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 0);
+	XCTAssertEqual(entry.info.key.length, 0);
+	
+	XCTAssertEqual(entry.info.value.location, 0);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeComment);
+}
+
+- (void)testINIEntry_EntryWithLine_Blank {
+	INIEntry *entry = [INIEntry entryWithLine: @""];
+	
+	XCTAssertEqualObjects(entry.key, @"");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 0);
+	XCTAssertEqual(entry.info.key.length, 0);
+	
+	XCTAssertEqual(entry.info.value.location, 0);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeOther);
 }
 
 @end

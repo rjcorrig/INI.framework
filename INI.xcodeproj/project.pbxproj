@@ -18,10 +18,19 @@
 		EB41D1CC11CAF4750018876A /* INIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1C811CAF4750018876A /* INIFile.m */; };
 		EB41D1D411CAF5010018876A /* Readme.mkdn in Resources */ = {isa = PBXBuildFile; fileRef = EB41D1D311CAF5010018876A /* Readme.mkdn */; };
 		EB41D24211CCB4E80018876A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1B611CAF4070018876A /* main.m */; };
+		EB84E90A1DBD6564006B1E6E /* INI_framework_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB84E9091DBD6564006B1E6E /* INI_framework_Tests.m */; };
+		EB84E90C1DBD6564006B1E6E /* INI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* INI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		EB41D1AD11CAF3E10018876A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = INI.framework;
+		};
+		EB84E90D1DBD6564006B1E6E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
@@ -44,6 +53,9 @@
 		EB41D1C711CAF4750018876A /* INIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INIFile.h; sourceTree = "<group>"; };
 		EB41D1C811CAF4750018876A /* INIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INIFile.m; sourceTree = "<group>"; };
 		EB41D1D311CAF5010018876A /* Readme.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mkdn; sourceTree = "<group>"; };
+		EB84E9071DBD6564006B1E6E /* INI.framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "INI.framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB84E9091DBD6564006B1E6E /* INI_framework_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INI_framework_Tests.m; sourceTree = "<group>"; };
+		EB84E90B1DBD6564006B1E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +75,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB84E9041DBD6564006B1E6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB84E90C1DBD6564006B1E6E /* INI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -71,6 +91,7 @@
 			children = (
 				8DC2EF5B0486A6940098B216 /* INI.framework */,
 				EB41D1A911CAF3DB0018876A /* ini */,
+				EB84E9071DBD6564006B1E6E /* INI.framework Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +104,7 @@
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				EB84E9081DBD6564006B1E6E /* INI.framework Tests */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = INI;
@@ -150,6 +172,15 @@
 			name = ini;
 			sourceTree = "<group>";
 		};
+		EB84E9081DBD6564006B1E6E /* INI.framework Tests */ = {
+			isa = PBXGroup;
+			children = (
+				EB84E9091DBD6564006B1E6E /* INI_framework_Tests.m */,
+				EB84E90B1DBD6564006B1E6E /* Info.plist */,
+			);
+			path = "INI.framework Tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -202,6 +233,24 @@
 			productReference = EB41D1A911CAF3DB0018876A /* ini */;
 			productType = "com.apple.product-type.tool";
 		};
+		EB84E9061DBD6564006B1E6E /* INI.framework Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB84E9111DBD6564006B1E6E /* Build configuration list for PBXNativeTarget "INI.framework Tests" */;
+			buildPhases = (
+				EB84E9031DBD6564006B1E6E /* Sources */,
+				EB84E9041DBD6564006B1E6E /* Frameworks */,
+				EB84E9051DBD6564006B1E6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EB84E90E1DBD6564006B1E6E /* PBXTargetDependency */,
+			);
+			name = "INI.framework Tests";
+			productName = "INI.framework Tests";
+			productReference = EB84E9071DBD6564006B1E6E /* INI.framework Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -209,6 +258,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0800;
+				TargetAttributes = {
+					EB84E9061DBD6564006B1E6E = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "INI" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -224,6 +279,7 @@
 			targets = (
 				8DC2EF4F0486A6940098B216 /* INI.framework */,
 				EB41D1A811CAF3DB0018876A /* ini */,
+				EB84E9061DBD6564006B1E6E /* INI.framework Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +291,13 @@
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
 				EB41D1D411CAF5010018876A /* Readme.mkdn in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EB84E9051DBD6564006B1E6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +322,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EB84E9031DBD6564006B1E6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB84E90A1DBD6564006B1E6E /* INI_framework_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -266,6 +337,11 @@
 			isa = PBXTargetDependency;
 			target = 8DC2EF4F0486A6940098B216 /* INI.framework */;
 			targetProxy = EB41D1AD11CAF3E10018876A /* PBXContainerItemProxy */;
+		};
+		EB84E90E1DBD6564006B1E6E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DC2EF4F0486A6940098B216 /* INI.framework */;
+			targetProxy = EB84E90D1DBD6564006B1E6E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -427,6 +503,66 @@
 			};
 			name = Release;
 		};
+		EB84E90F1DBD6564006B1E6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "INI.framework Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rohrer.INI-framework-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EB84E9101DBD6564006B1E6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "INI.framework Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.rohrer.INI-framework-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -456,6 +592,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		EB84E9111DBD6564006B1E6E /* Build configuration list for PBXNativeTarget "INI.framework Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB84E90F1DBD6564006B1E6E /* Debug */,
+				EB84E9101DBD6564006B1E6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

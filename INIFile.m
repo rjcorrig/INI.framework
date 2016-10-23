@@ -33,7 +33,9 @@
 - (void) setContents: (NSString *) contents_ {
   self.entries = [NSMutableArray array];
   for (NSString *line in [contents_ componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]]) {
-    [self.entries addObject: [[INIEntry alloc] initWithLine: line]];
+    if (line.length > 0) {
+      [self.entries addObject: [[INIEntry alloc] initWithLine: line]];
+    }
   }
 }
 

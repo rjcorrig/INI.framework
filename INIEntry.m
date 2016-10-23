@@ -105,10 +105,19 @@
                   // ...let's skip all those whitespaces, equal sign and all whitespaces after the sign
                   // and jump straight to 'v'alue state
                   for (j = j + 1; j < n && ([line characterAtIndex: j] == ' ' || [line characterAtIndex: j] == '\t'); j++) {}
+
+                  if (j == n) {
+                    // value is blank
+                    info.value.length = 0;
+                    state = '.';
+                  } else {
+                    state = 'v';
+                  }
+
                   i = j - 1;
-                  state = 'v';
                   info.value.location = j;
-                } else {
+
+		} else {
                   // we're still in the key with the whitespaces in the middle
                   // let's skip them and continue inside 'k'ey state
                   i = j - 1;

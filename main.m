@@ -31,6 +31,13 @@ int main(int argc, char** argv) {
          (int)entry.info.key.location, (int)entry.info.key.length,
          (int)entry.info.value.location, (int)entry.info.value.length);
   printf("\nkey '%s' is value '%s' section '%s'\n", [entry.key UTF8String], [entry.value UTF8String], [entry.section UTF8String]);
+	
+  NSError *err;
+  NSString *path = [@"~/.gitconfig" stringByExpandingTildeInPath];
+  INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile: path error: &err];
+  NSString *token = [config valueForKey: @"name" inSection: @"user"];
+  NSString *user = [config valueForKey: @"email" inSection: @"user"];
+  NSLog(@"GitHub token %@ for user %@", token, user);
   
   [pool drain];
   return 0;

@@ -18,7 +18,7 @@
 		EB41D1CC11CAF4750018876A /* INIFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1C811CAF4750018876A /* INIFile.m */; };
 		EB41D1D411CAF5010018876A /* Readme.mkdn in Resources */ = {isa = PBXBuildFile; fileRef = EB41D1D311CAF5010018876A /* Readme.mkdn */; };
 		EB41D24211CCB4E80018876A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1B611CAF4070018876A /* main.m */; };
-		EB84E90A1DBD6564006B1E6E /* INI_framework_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB84E9091DBD6564006B1E6E /* INI_framework_Tests.m */; };
+		EB84E90A1DBD6564006B1E6E /* INI_Entry_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */; };
 		EB84E90C1DBD6564006B1E6E /* INI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* INI.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 		EB41D1C811CAF4750018876A /* INIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INIFile.m; sourceTree = "<group>"; };
 		EB41D1D311CAF5010018876A /* Readme.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mkdn; sourceTree = "<group>"; };
 		EB84E9071DBD6564006B1E6E /* INI.framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "INI.framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB84E9091DBD6564006B1E6E /* INI_framework_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INI_framework_Tests.m; sourceTree = "<group>"; };
+		EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INI_Entry_Tests.m; sourceTree = "<group>"; };
 		EB84E90B1DBD6564006B1E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,7 +175,7 @@
 		EB84E9081DBD6564006B1E6E /* INI.framework Tests */ = {
 			isa = PBXGroup;
 			children = (
-				EB84E9091DBD6564006B1E6E /* INI_framework_Tests.m */,
+				EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */,
 				EB84E90B1DBD6564006B1E6E /* Info.plist */,
 			);
 			path = "INI.framework Tests";
@@ -326,7 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB84E90A1DBD6564006B1E6E /* INI_framework_Tests.m in Sources */,
+				EB84E90A1DBD6564006B1E6E /* INI_Entry_Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

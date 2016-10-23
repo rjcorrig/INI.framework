@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "INI.h"
 
-@interface INI_framework_Tests : XCTestCase
+@interface INI_Entry_Tests : XCTestCase
 
 @end
 
-@implementation INI_framework_Tests
+@implementation INI_Entry_Tests
 
 - (void)setUp {
     [super setUp];

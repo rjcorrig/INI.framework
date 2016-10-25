@@ -36,7 +36,10 @@
 	XCTAssertEqual([[config entries] count], 10);
 	
 	NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
-	XCTAssertEqualObjects(contents, [config contents]);
+	XCTAssertEqualObjects(contents, config.contents);
+	XCTAssertEqual(contents.length, config.contents.length);
+	
+	XCTAssertEqualObjects(config.newLine, @"\r\n");
 }
 
 - (void)testINIFile_sections {

@@ -7,7 +7,7 @@
 @implementation INIFile
 
 @synthesize entries;
-@synthesize contents;
+@synthesize newLine;
 
 - (id) init {
   if (self = [super init]) {
@@ -30,9 +30,33 @@
   return self;
 }
 
+- (NSString*) contents {
+  NSMutableString *contents_ = [[NSMutableString alloc] init];
+  for (INIEntry *entry in entries) {
+    [contents_ appendFormat:@"%@%@", entry.line, newLine];
+  }
+
+  return contents_;
+}
+
 - (void) setContents: (NSString *) contents_ {
   self.entries = [NSMutableArray array];
-  for (NSString *line in [contents_ componentsSeparatedByCharactersInSet: [NSCharacterSet newlineCharacterSet]]) {
+
+  // Determine newline: LF, CR, or CRLF
+  NSRange firstLineEnd = [contents_ rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
+  if ([[contents_ substringWithRange:firstLineEnd] isEqualToString:@"\n"]) {
+    newLine = @"\n";
+  } else {
+    NSRange lineEndTest = NSMakeRange(firstLineEnd.location, 2);
+    NSString *newLinee = [contents_ substringWithRange:lineEndTest];
+    if ([newLinee isEqualToString:@"\r\n"]) {
+      newLine = @"\r\n";
+    } else {
+      newLine = @"\r";
+    }
+  }
+	
+  for (NSString *line in [contents_ componentsSeparatedByString:newLine]) {
     [self.entries addObject: [[INIEntry alloc] initWithLine: line]];
   }
 }

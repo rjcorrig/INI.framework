@@ -59,7 +59,7 @@
 		EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INI_Entry_Tests.m; sourceTree = "<group>"; };
 		EB84E90B1DBD6564006B1E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB84E9121DBD7A5E006B1E6E /* INI_File_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INI_File_Tests.m; sourceTree = "<group>"; };
-		EB84E9141DBD7AF6006B1E6E /* test.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.ini; sourceTree = "<group>"; };
+		EB84E9141DBD7AF6006B1E6E /* test.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 2; path = test.ini; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -608,6 +608,7 @@
 				EB84E9101DBD6564006B1E6E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

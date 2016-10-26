@@ -89,7 +89,7 @@
 
 - (void)testINIFile_valueForKey {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
 	NSError *err;
 	
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
@@ -100,20 +100,20 @@
 
 - (void)testINIFile_valuesForKey {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
 	NSError *err;
 	
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
 	
 	XCTAssertNil(err);
 	
-	NSMutableArray *values = [config valueForKey:@"name"];
+	NSMutableArray *values = [config valuesForKey:@"name"];
 	XCTAssertEqualObjects([values objectAtIndex:0], @"Mirek Rusin");
 }
 
 - (void)testINIFile_valueForKey_InSection {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
 	NSError *err;
 	
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
@@ -124,14 +124,14 @@
 
 - (void)testINIFile_valuesForKey_InSection {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
 	NSError *err;
 	
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
 	
 	XCTAssertNil(err);
 	
-	NSMutableArray *values = [config valueForKey:@"name" inSection:@"user"];
+	NSMutableArray *values = [config valuesForKey:@"name" inSection:@"user"];
 	XCTAssertEqualObjects([values objectAtIndex:0], @"Mirek Rusin");
 }
 

@@ -78,7 +78,7 @@
 
 - (void)testINIFile_sections {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
 	NSError *err;
 	
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];

@@ -25,9 +25,9 @@
     [super tearDown];
 }
 
-- (void)testINIFile_initWithUTF8ContentsOfFile {
+- (void)testINIFile_initWithUTF8ContentsOfFile_CRLF {
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test" ofType:@"ini"];
+	NSString *path = [bundle pathForResource:@"test_crlf" ofType:@"ini"];
 	NSError *err;
 	
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
@@ -40,6 +40,40 @@
 	XCTAssertEqual(contents.length, config.contents.length);
 	
 	XCTAssertEqualObjects(config.newLine, @"\r\n");
+}
+
+- (void)testINIFile_initWithUTF8ContentsOfFile_CR {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_cr" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	XCTAssertEqual([[config entries] count], 10);
+	
+	NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+	XCTAssertEqualObjects(contents, config.contents);
+	XCTAssertEqual(contents.length, config.contents.length);
+	
+	XCTAssertEqualObjects(config.newLine, @"\r");
+}
+
+- (void)testINIFile_initWithUTF8ContentsOfFile_LF {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	XCTAssertEqual([[config entries] count], 10);
+	
+	NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
+	XCTAssertEqualObjects(contents, config.contents);
+	XCTAssertEqual(contents.length, config.contents.length);
+	
+	XCTAssertEqualObjects(config.newLine, @"\n");
 }
 
 - (void)testINIFile_sections {

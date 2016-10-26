@@ -32,8 +32,10 @@
 
 - (NSString*) contents {
   NSMutableString *contents_ = [[NSMutableString alloc] init];
-  for (INIEntry *entry in entries) {
-    [contents_ appendFormat:@"%@%@", entry.line, newLine];
+
+  for (int i = 0; i < entries.count; i++) {
+    INIEntry *entry = [entries objectAtIndex:i];
+    [contents_ appendFormat:@"%@%@", entry.line, (i < entries.count -1) ? newLine : @""];
   }
 
   return contents_;

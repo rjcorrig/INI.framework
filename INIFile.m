@@ -64,30 +64,46 @@
 }
 
 - (NSString *) valueForKey: (NSString *) key {
-  for (INIEntry *entry in self.entries) {
-    if ([entry.key isEqualToString:key]) {
-      return entry.value;
+  NSArray *values = [self valuesForKey: key];
+    if ([values count] > 0) {
+      return [values objectAtIndex:0];
+    } else {
+      return nil;
     }
-  }
-  return nil;
 }
 
 - (NSMutableArray *) valuesForKey: (NSString *) key {
   NSMutableArray *values = [NSMutableArray array];
-    for (INIEntry *entry in self.entries) {
-      if ([entry.key isEqualToString:key]) {
-        [values addObject:entry.value];
-      }
+  for (INIEntry *entry in self.entries) {
+    if ([entry.key isEqualToString:key]) {
+      [values addObject:entry.value];
     }
+  }
   return values;
 }
 
 - (NSString *) valueForKey: (NSString *) key inSection: (NSString *) section {
-  return [[self valuesForKey: key inSection: section] objectAtIndex: 0];
+  NSArray *values = [self valuesForKey: key inSection: section];
+  if ([values count] > 0) {
+    return [values objectAtIndex:0];
+  } else {
+    return nil;
+  }
 }
 
 - (NSMutableArray *) valuesForKey: (NSString *) key inSection: (NSString *) section {
-  return [NSMutableArray array];
+  NSMutableArray *values = [NSMutableArray array];
+  NSString *currentSection;
+
+  for (INIEntry *entry in self.entries) {
+    if ([entry.section isEqualToString:section]) {
+      currentSection = entry.section;
+    }
+    if ([entry.key isEqualToString:key] && [currentSection isEqualToString:section]) {
+      [values addObject:entry.value];
+    }
+  }
+  return values;
 }
 
 - (void) setValue: (NSString *) value forKey: (NSString *) key inSection: (NSString *) section {
@@ -95,7 +111,7 @@
 
 - (NSIndexSet *) sectionIndexes {
   return [self.entries indexesOfObjectsPassingTest: ^(id entry, NSUInteger index, BOOL *stop) {
-    return (BOOL)((INIEntry *)[entry type] == INIEntryTypeSection);
+    return (BOOL)([(INIEntry *)entry type] == INIEntryTypeSection);
   }];
 }
 

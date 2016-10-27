@@ -93,7 +93,7 @@
 
 - (NSMutableArray *) valuesForKey: (NSString *) key inSection: (NSString *) section {
   NSMutableArray *values = [NSMutableArray array];
-  NSString *currentSection;
+  NSString *currentSection = nil;
 
   for (INIEntry *entry in self.entries) {
     if ([entry.section isEqualToString:section]) {

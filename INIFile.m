@@ -64,11 +64,22 @@
 }
 
 - (NSString *) valueForKey: (NSString *) key {
+  for (INIEntry *entry in self.entries) {
+    if ([entry.key isEqualToString:key]) {
+      return entry.value;
+    }
+  }
   return nil;
 }
 
 - (NSMutableArray *) valuesForKey: (NSString *) key {
-  return [NSMutableArray array];
+  NSMutableArray *values = [NSMutableArray array];
+    for (INIEntry *entry in self.entries) {
+      if ([entry.key isEqualToString:key]) {
+        [values addObject:entry.value];
+      }
+    }
+  return values;
 }
 
 - (NSString *) valueForKey: (NSString *) key inSection: (NSString *) section {

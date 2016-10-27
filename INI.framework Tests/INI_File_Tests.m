@@ -67,7 +67,7 @@
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
 	
 	XCTAssertNil(err);
-	XCTAssertEqual([[config entries] count], 10);
+	XCTAssertEqual([[config entries] count], 11);
 	
 	NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&err];
 	XCTAssertEqualObjects(contents, config.contents);
@@ -108,7 +108,9 @@
 	XCTAssertNil(err);
 	
 	NSMutableArray *values = [config valuesForKey:@"name"];
+	XCTAssertEqual([values count], 2);
 	XCTAssertEqualObjects([values objectAtIndex:0], @"Mirek Rusin");
+	XCTAssertEqualObjects([values objectAtIndex:1], @"MirekRusin");
 }
 
 - (void)testINIFile_valueForKey_InSection_Found {
@@ -119,7 +121,7 @@
 	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
 	
 	XCTAssertNil(err);
-	XCTAssertEqualObjects([config valueForKey:@"name" inSection:@"user"], @"Mirek Rusin");
+	XCTAssertEqualObjects([config valueForKey:@"name" inSection:@"github"], @"MirekRusin");
 }
 
 - (void)testINIFile_valuesForKey_InSection_Found {
@@ -131,8 +133,9 @@
 	
 	XCTAssertNil(err);
 	
-	NSMutableArray *values = [config valuesForKey:@"name" inSection:@"user"];
-	XCTAssertEqualObjects([values objectAtIndex:0], @"Mirek Rusin");
+	NSMutableArray *values = [config valuesForKey:@"name" inSection:@"github"];
+	XCTAssertEqual([values count], 1);
+	XCTAssertEqualObjects([values objectAtIndex:0], @"MirekRusin");
 }
 
 - (void)testINIFile_valueForKey_NotFound {

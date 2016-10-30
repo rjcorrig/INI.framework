@@ -46,6 +46,27 @@
 	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
 }
 
+- (void)testINIEntry_EntryWithLine_KeyWithSpacesAndValue {
+	NSString *line = @"  user name  \t=  mirek  ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+	
+	XCTAssertEqualObjects(entry.line, line);
+	XCTAssertEqualObjects(entry.key, @"user name");
+	XCTAssertEqualObjects(entry.value, @"mirek");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 9);
+	
+	XCTAssertEqual(entry.info.value.location, 17);
+	XCTAssertEqual(entry.info.value.length, 5);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
+}
+
 - (void)testINIEntry_EntryWithLine_KeyOnly {
 	NSString *line = @"  username  \t=";
 	INIEntry *entry = [INIEntry entryWithLine: line];
@@ -65,6 +86,48 @@
 	XCTAssertEqual(entry.info.section.length, 0);
 
 	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
+}
+
+- (void)testINIEntry_EntryWithLine_KeyOnlyNoEqualSignTrailing {
+	NSString *line = @"  username  \t";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+	
+	XCTAssertEqualObjects(entry.line, line);
+	XCTAssertEqualObjects(entry.key, @"");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 0);
+	XCTAssertEqual(entry.info.key.length, 0);
+	
+	XCTAssertEqual(entry.info.value.location, 0);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeOther);
+}
+
+- (void)testINIEntry_EntryWithLine_KeyOnlyNoEqualSign {
+	NSString *line = @"username";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+	
+	XCTAssertEqualObjects(entry.line, line);
+	XCTAssertEqualObjects(entry.key, @"");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 0);
+	XCTAssertEqual(entry.info.key.length, 0);
+	
+	XCTAssertEqual(entry.info.value.location, 0);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeOther);
 }
 
 - (void)testINIEntry_EntryWithLine_Section {

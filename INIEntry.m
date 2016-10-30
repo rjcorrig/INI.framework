@@ -96,6 +96,8 @@
               if (j == n) {
                 // malformed entry, we were looking for = sign after the key and reached end of the line
                 state = '.';
+		info.key.location = 0;
+                type = INIEntryTypeOther;
               } else {
                 if ([line characterAtIndex: j] == '=') {
                   // the key finished at i - 1 (before this whitespace), there were just whitespaces before = sign
@@ -155,7 +157,9 @@
       }
     }
     
-    assert(state == '.');
+    if (state != '.') {
+      type = INIEntryTypeOther;
+    }
   }
 }
 

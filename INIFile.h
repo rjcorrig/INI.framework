@@ -15,12 +15,12 @@
 //
 @interface INIFile : NSObject {
   NSMutableArray *entries;
-  NSString *newLine;
+  NSString *lineEnding;
 }
 
 @property (nonatomic, retain) NSMutableArray *entries;
-@property NSString *contents;
-@property (assign, readwrite) NSString *newLine;
+@property (copy) NSString *contents;
+@property (readonly) NSString *lineEnding;
 
 - (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error;
 - (id) initWithContentsOfFile: (NSString *) path encoding: (NSStringEncoding) encoding error: (NSError **) error;

@@ -39,7 +39,7 @@
 	XCTAssertEqualObjects(contents, config.contents);
 	XCTAssertEqual(contents.length, config.contents.length);
 	
-	XCTAssertEqualObjects(config.newLine, @"\r\n");
+	XCTAssertEqualObjects(config.lineEnding, @"\r\n");
 }
 
 - (void)testINIFile_initWithUTF8ContentsOfFile_CR {
@@ -56,7 +56,7 @@
 	XCTAssertEqualObjects(contents, config.contents);
 	XCTAssertEqual(contents.length, config.contents.length);
 	
-	XCTAssertEqualObjects(config.newLine, @"\r");
+	XCTAssertEqualObjects(config.lineEnding, @"\r");
 }
 
 - (void)testINIFile_initWithUTF8ContentsOfFile_LF {
@@ -73,7 +73,7 @@
 	XCTAssertEqualObjects(contents, config.contents);
 	XCTAssertEqual(contents.length, config.contents.length);
 	
-	XCTAssertEqualObjects(config.newLine, @"\n");
+	XCTAssertEqualObjects(config.lineEnding, @"\n");
 }
 
 - (void)testINIFile_sections {

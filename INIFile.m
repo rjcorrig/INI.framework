@@ -7,7 +7,7 @@
 @implementation INIFile
 
 @synthesize entries;
-@synthesize newLine;
+@synthesize lineEnding = _lineEnding;
 
 - (id) init {
   if (self = [super init]) {
@@ -35,7 +35,7 @@
 
   for (int i = 0; i < entries.count; i++) {
     INIEntry *entry = [entries objectAtIndex:i];
-    [contents_ appendFormat:@"%@%@", entry.line, (i < entries.count -1) ? newLine : @""];
+    [contents_ appendFormat:@"%@%@", entry.line, (i < entries.count -1) ? _lineEnding : @""];
   }
 
   return contents_;
@@ -47,18 +47,18 @@
   // Determine newline: LF, CR, or CRLF
   NSRange firstLineEnd = [contents_ rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
   if ([[contents_ substringWithRange:firstLineEnd] isEqualToString:@"\n"]) {
-    newLine = @"\n";
+    _lineEnding = @"\n";
   } else {
     NSRange lineEndTest = NSMakeRange(firstLineEnd.location, 2);
     NSString *newLinee = [contents_ substringWithRange:lineEndTest];
     if ([newLinee isEqualToString:@"\r\n"]) {
-      newLine = @"\r\n";
+      _lineEnding = @"\r\n";
     } else {
-      newLine = @"\r";
+      _lineEnding = @"\r";
     }
   }
 	
-  for (NSString *line in [contents_ componentsSeparatedByString:newLine]) {
+  for (NSString *line in [contents_ componentsSeparatedByString:_lineEnding]) {
     [self.entries addObject: [[INIEntry alloc] initWithLine: line]];
   }
 }

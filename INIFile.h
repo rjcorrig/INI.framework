@@ -35,4 +35,6 @@
 - (NSString *) valueForKey: (NSString *) key inSection: (NSString *) section;
 - (NSMutableArray *) valuesForKey: (NSString *) key inSection: (NSString *) section;
 
+- (void) setValue: (NSString *) value forKey: (NSString *) key inSection: (NSString *) section;
+
 @end

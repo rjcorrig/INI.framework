@@ -105,6 +105,35 @@
 }
 
 - (void) setValue: (NSString *) value forKey: (NSString *) key inSection: (NSString *) section {
+	INIEntry *updatingEntry = nil;
+	NSString *currentSection = nil;
+	NSInteger sectionIndex = -1;
+	
+	// Find the section and entry to modify
+	for (INIEntry *entry in self.entries) {
+		if ([entry.section isEqualToString:section]) {
+			currentSection = entry.section;
+			sectionIndex = [self.entries indexOfObject:entry];
+		}
+		if ([entry.key isEqualToString:key] && [currentSection isEqualToString:section]) {
+			updatingEntry = entry;
+			break;
+		}
+	}
+
+	if (updatingEntry) {
+		updatingEntry.value = value;
+		return;
+	}
+
+	if (sectionIndex < 0) {
+		INIEntry *newSection = [INIEntry entryWithLine:[NSString stringWithFormat:@"[%@]", section]];
+		[self.entries addObject:newSection];
+		sectionIndex = [self.entries count] - 1;
+	}
+	
+	updatingEntry = [INIEntry entryWithLine:[NSString stringWithFormat:@"%@ = %@", key, value]];
+	[self.entries insertObject:updatingEntry atIndex:sectionIndex+1];
 }
 
 - (NSIndexSet *) sectionIndexes {

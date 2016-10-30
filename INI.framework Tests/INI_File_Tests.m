@@ -186,4 +186,44 @@
 	XCTAssertEqual([values count], 0);
 }
 
+- (void)testINIFile_setValue_forKey_inSection_NewSectionNewKey {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	
+	[config setValue:@"newValue" forKey:@"newKey" inSection:@"newSection"];
+	XCTAssertEqualObjects([config valueForKey:@"newKey" inSection:@"newSection"], @"newValue");
+}
+
+- (void)testINIFile_setValue_forKey_inSection_ExistingSectionNewKey {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	
+	[config setValue:@"newValue" forKey:@"newKey" inSection:@"github"];
+	XCTAssertEqualObjects([config valueForKey:@"newKey" inSection:@"github"], @"newValue");
+}
+
+- (void)testINIFile_setValue_forKey_inSection_ExistingSectionExistingKey {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_lf" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *config = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	
+	XCTAssertNil(err);
+	
+	XCTAssertEqualObjects([config valueForKey:@"name" inSection:@"github"], @"MirekRusin");
+	[config setValue:@"rjcorrig" forKey:@"name" inSection:@"github"];
+	XCTAssertEqualObjects([config valueForKey:@"name" inSection:@"github"], @"rjcorrig");
+}
+
 @end

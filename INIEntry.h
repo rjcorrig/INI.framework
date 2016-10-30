@@ -23,7 +23,7 @@ typedef struct {
   INIEntryType type;
 }
 
-@property (nonatomic, retain) NSString *line;
+@property (nonatomic, strong) NSString *line;
 @property (assign) INIEntryInfo info;
 @property (assign) INIEntryType type;
 

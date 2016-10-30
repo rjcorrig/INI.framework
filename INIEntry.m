@@ -32,8 +32,6 @@
 }
 
 - (void) setLine: (NSString *) line_ {
-  if (line)
-    [line release];
   line = line_;
   [self parse];
 }

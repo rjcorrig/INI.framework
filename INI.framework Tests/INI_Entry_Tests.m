@@ -130,4 +130,98 @@
 	XCTAssertEqual(entry.type, INIEntryTypeOther);
 }
 
+- (void)testINIEntry_SetKey {
+	NSString *line = @"  username  \t=  mirek  ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+
+	NSString *expectedLine = [line stringByReplacingOccurrencesOfString:@"username" withString:@"accountname"];
+
+	entry.key = @"accountname";
+	XCTAssertEqualObjects(entry.line, expectedLine);
+	XCTAssertEqualObjects(entry.key, @"accountname");
+	XCTAssertEqualObjects(entry.value, @"mirek");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 11);
+	
+	XCTAssertEqual(entry.info.value.location, 19);
+	XCTAssertEqual(entry.info.value.length, 5);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
+}
+
+- (void)testINIEntry_SetKeyBlank_ShouldIgnore {
+	NSString *line = @"  username  \t=  mirek  ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+	
+	entry.key = @"";
+	XCTAssertEqualObjects(entry.line, line);
+	XCTAssertEqualObjects(entry.key, @"username");
+	XCTAssertEqualObjects(entry.value, @"mirek");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 8);
+	
+	XCTAssertEqual(entry.info.value.location, 16);
+	XCTAssertEqual(entry.info.value.length, 5);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
+}
+
+- (void)testINIEntry_SetValue {
+	NSString *line = @"  username  \t=  mirek  ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+	
+	NSString *expectedLine = [line stringByReplacingOccurrencesOfString:@"mirek" withString:@"rjcorrig"];
+	
+	entry.value = @"rjcorrig";
+	XCTAssertEqualObjects(entry.line, expectedLine);
+	XCTAssertEqualObjects(entry.key, @"username");
+	XCTAssertEqualObjects(entry.value, @"rjcorrig");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 8);
+	
+	XCTAssertEqual(entry.info.value.location, 16);
+	XCTAssertEqual(entry.info.value.length, 8);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
+}
+
+- (void)testINIEntry_SetValueBlank {
+	NSString *line = @"  username  \t=  mirek  ";
+	INIEntry *entry = [INIEntry entryWithLine: line];
+	
+	NSString *expectedLine = [line stringByReplacingOccurrencesOfString:@"mirek" withString:@""];
+	
+	entry.value = @"";
+	XCTAssertEqualObjects(entry.line, expectedLine);
+	XCTAssertEqualObjects(entry.key, @"username");
+	XCTAssertEqualObjects(entry.value, @"");
+	XCTAssertEqualObjects(entry.section, @"");
+	
+	XCTAssertEqual(entry.info.key.location, 2);
+	XCTAssertEqual(entry.info.key.length, 8);
+	
+	XCTAssertEqual(entry.info.value.location, 18);
+	XCTAssertEqual(entry.info.value.length, 0);
+	
+	XCTAssertEqual(entry.info.section.location, 0);
+	XCTAssertEqual(entry.info.section.length, 0);
+	
+	XCTAssertEqual(entry.type, INIEntryTypeKeyValue);
+}
+
 @end

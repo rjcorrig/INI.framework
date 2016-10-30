@@ -163,14 +163,20 @@
   return [line substringWithRange: info.key];
 }
 
-- (void) setKey: (NSString *) key {
+- (void) setKey: (NSString *) key_ {
+	if ([[key_ stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]) {
+		line = [line stringByReplacingOccurrencesOfString:self.key withString:key_];
+		[self parse];
+	}
 }
 
 - (NSString *) value {
   return [line substringWithRange: info.value];
 }
 
-- (void) setValue: (NSString *) value {
+- (void) setValue: (NSString *) value_ {
+	line = [line stringByReplacingOccurrencesOfString:self.value withString:value_];
+	[self parse];
 }
 
 - (NSString *) section {

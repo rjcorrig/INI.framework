@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSMutableArray *entries;
 @property (copy) NSString *contents;
 @property (weak, readonly) NSString *lineEnding;
+@property (copy) NSString *path;
+@property (assign) NSStringEncoding encoding;
 
 - (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error;
 - (id) initWithContentsOfFile: (NSString *) path encoding: (NSStringEncoding) encoding error: (NSError **) error;

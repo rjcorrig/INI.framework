@@ -8,6 +8,8 @@
 
 @synthesize entries;
 @synthesize lineEnding = _lineEnding;
+@synthesize path;
+@synthesize encoding;
 
 - (id) init {
   if (self = [super init]) {
@@ -16,14 +18,16 @@
   return self;
 }
 
-- (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error {
-  self = [self initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:error];
+- (id) initWithUTF8ContentsOfFile: (NSString *) path_ error: (NSError **) error {
+  self = [self initWithContentsOfFile:path_ encoding:NSUTF8StringEncoding error:error];
   return self;
 }
 
-- (id) initWithContentsOfFile: (NSString *) path encoding: (NSStringEncoding) encoding error: (NSError **) error {
+- (id) initWithContentsOfFile: (NSString *) path_ encoding: (NSStringEncoding) encoding_ error: (NSError **) error {
   if (self = [self init]) {
-    self.contents = [NSString stringWithContentsOfFile: path encoding: encoding error: error];
+    self.contents = [NSString stringWithContentsOfFile: path_ encoding: encoding_ error: error];
+    self.encoding = encoding_;
+    self.path = path_;
   }
   return self;
 }

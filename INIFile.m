@@ -17,9 +17,7 @@
 }
 
 - (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error {
-  if (self = [self init]) {
-    self.contents = [NSString stringWithContentsOfFile: path encoding: NSUTF8StringEncoding error: error];
-  }
+  self = [self initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:error];
   return self;
 }
 

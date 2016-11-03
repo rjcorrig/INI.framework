@@ -53,7 +53,7 @@
 		EB41D1B611CAF4070018876A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EB41D1B811CAF4320018876A /* INI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INI.h; sourceTree = "<group>"; };
 		EB41D1C511CAF4750018876A /* INIEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INIEntry.h; sourceTree = "<group>"; };
-		EB41D1C611CAF4750018876A /* INIEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INIEntry.m; sourceTree = "<group>"; };
+		EB41D1C611CAF4750018876A /* INIEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = INIEntry.m; sourceTree = "<group>"; tabWidth = 2; };
 		EB41D1C711CAF4750018876A /* INIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INIFile.h; sourceTree = "<group>"; };
 		EB41D1C811CAF4750018876A /* INIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INIFile.m; sourceTree = "<group>"; };
 		EB41D1D311CAF5010018876A /* Readme.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mkdn; sourceTree = "<group>"; };

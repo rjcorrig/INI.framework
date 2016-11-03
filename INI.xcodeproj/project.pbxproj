@@ -50,12 +50,12 @@
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* INI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = INI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB41D1A911CAF3DB0018876A /* ini */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ini; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB41D1B611CAF4070018876A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EB41D1B811CAF4320018876A /* INI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INI.h; sourceTree = "<group>"; };
-		EB41D1C511CAF4750018876A /* INIEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INIEntry.h; sourceTree = "<group>"; };
+		EB41D1B611CAF4070018876A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; tabWidth = 2; };
+		EB41D1B811CAF4320018876A /* INI.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = INI.h; sourceTree = "<group>"; tabWidth = 2; };
+		EB41D1C511CAF4750018876A /* INIEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = INIEntry.h; sourceTree = "<group>"; tabWidth = 2; };
 		EB41D1C611CAF4750018876A /* INIEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = INIEntry.m; sourceTree = "<group>"; tabWidth = 2; };
-		EB41D1C711CAF4750018876A /* INIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INIFile.h; sourceTree = "<group>"; };
-		EB41D1C811CAF4750018876A /* INIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INIFile.m; sourceTree = "<group>"; };
+		EB41D1C711CAF4750018876A /* INIFile.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = INIFile.h; sourceTree = "<group>"; tabWidth = 2; };
+		EB41D1C811CAF4750018876A /* INIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = INIFile.m; sourceTree = "<group>"; tabWidth = 2; };
 		EB41D1D311CAF5010018876A /* Readme.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mkdn; sourceTree = "<group>"; };
 		EB84E9071DBD6564006B1E6E /* INI.framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "INI.framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INI_Entry_Tests.m; sourceTree = "<group>"; };

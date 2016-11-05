@@ -58,9 +58,9 @@
 		EB41D1C811CAF4750018876A /* INIFile.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = INIFile.m; sourceTree = "<group>"; tabWidth = 2; };
 		EB41D1D311CAF5010018876A /* Readme.mkdn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.mkdn; sourceTree = "<group>"; };
 		EB84E9071DBD6564006B1E6E /* INI.framework Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "INI.framework Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INI_Entry_Tests.m; sourceTree = "<group>"; };
+		EB84E9091DBD6564006B1E6E /* INI_Entry_Tests.m */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = INI_Entry_Tests.m; sourceTree = "<group>"; tabWidth = 2; };
 		EB84E90B1DBD6564006B1E6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EB84E9121DBD7A5E006B1E6E /* INI_File_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INI_File_Tests.m; sourceTree = "<group>"; };
+		EB84E9121DBD7A5E006B1E6E /* INI_File_Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = INI_File_Tests.m; sourceTree = "<group>"; tabWidth = 2; };
 		EB84E9141DBD7AF6006B1E6E /* test_crlf.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 2; path = test_crlf.ini; sourceTree = "<group>"; };
 		EBF4C5FC1DC03FE00032A9A8 /* test_lf.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 0; path = test_lf.ini; sourceTree = "<group>"; };
 		EBF4C5FE1DC040390032A9A8 /* test_cr.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; lineEnding = 1; path = test_cr.ini; sourceTree = "<group>"; };

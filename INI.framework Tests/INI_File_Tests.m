@@ -255,4 +255,44 @@
 	XCTAssertEqualObjects(destConfig.contents, srcConfig.contents);
 }
 
+- (void)testINIFile_writeFile_noPath {
+	INIFile *srcConfig = [[INIFile alloc] init];
+	XCTAssertNil([srcConfig valueForKey:@"newKey" inSection:@"newSection"]);
+	
+	[srcConfig setValue:@"newValue" forKey:@"newKey" inSection:@"newSection"];
+	XCTAssertEqualObjects([srcConfig valueForKey:@"newKey" inSection:@"newSection"], @"newValue");
+	
+	NSError *err;
+	[srcConfig writeToUTF8File:srcConfig.path atomically:YES error:&err];
+	
+	XCTAssertNotNil(err);
+}
+
+- (void)testINIFile_writeFile_autosave {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_write" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *srcConfig = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	XCTAssertNil(err);
+	XCTAssertNil([srcConfig valueForKey:@"newKey" inSection:@"newSection"]);
+	
+	srcConfig.autosave = YES;
+	[srcConfig setValue:@"newValue" forKey:@"newKey" inSection:@"newSection"];
+	XCTAssertEqualObjects([srcConfig valueForKey:@"newKey" inSection:@"newSection"], @"newValue");
+	
+	INIFile *destConfig = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	XCTAssertEqualObjects(destConfig.contents, srcConfig.contents);
+}
+
+- (void)testINIFile_writeFile_autosave_noPath {
+	
+	INIFile *srcConfig = [[INIFile alloc] init];
+	XCTAssertNil([srcConfig valueForKey:@"newKey" inSection:@"newSection"]);
+	
+	srcConfig.autosave = YES;
+	[srcConfig setValue:@"newValue" forKey:@"newKey" inSection:@"newSection"];
+	XCTAssertEqualObjects([srcConfig valueForKey:@"newKey" inSection:@"newSection"], @"newValue");	
+}
+
 @end

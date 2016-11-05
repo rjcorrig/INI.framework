@@ -16,10 +16,13 @@
 
 - (id) init {
   if (self = [super init]) {
-    self.entries = [NSMutableArray array];
-		entryController = [[NSArrayController alloc] initWithContent:self.entries];
+		entryController = [[NSArrayController alloc] init];
+		self.entries = [NSMutableArray array];
 		[entryController addObserver:self forKeyPath:@"arrangedObjects" options:0 context:nil];
 		[entryController addObserver:self forKeyPath:@"arrangedObjects.line" options:0 context:nil];
+		
+		self.encoding = NSUTF8StringEncoding;
+		self.autosave = NO;
   }
   return self;
 }
@@ -30,7 +33,14 @@
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-	NSLog(@"Received change for %@", keyPath);
+	if (autosave) {
+		NSError *err;
+		if ([self writeToFile:self.path atomically:YES encoding:self.encoding error:&err]) {
+			NSLog(@"Autosave succeeded");
+		} else {
+			NSLog(@"Autosave failed");
+		}
+	}
 }
 
 - (id) initWithUTF8ContentsOfFile: (NSString *) path_ error: (NSError **) error {
@@ -57,6 +67,11 @@
 	return [self writeToFile:path_ atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:error];
 }
 
+- (void) setEntries:(NSMutableArray *)entries_ {
+	entries = entries_;
+	[entryController setContent:entries];
+}
+
 - (NSString*) contents {
   NSMutableString *contents_ = [[NSMutableString alloc] init];
 
@@ -70,7 +85,6 @@
 
 - (void) setContents: (NSString *) contents_ {
 	self.entries = [NSMutableArray array];
-	[entryController setContent:self.entries];
 
   // Determine newline: LF, CR, or CRLF
   NSRange firstLineEnd = [contents_ rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];

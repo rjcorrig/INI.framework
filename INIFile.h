@@ -18,6 +18,7 @@
 
 @property (nonatomic, strong) NSMutableArray *entries;
 @property (copy) NSString *contents;
+
 @property (weak, readonly) NSString *lineEnding;
 @property (copy) NSString *path;
 @property (assign) NSStringEncoding encoding;

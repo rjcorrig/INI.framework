@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		EB0DD7D51DCE615D00D7BFC1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB0DD7D41DCE615D00D7BFC1 /* AppKit.framework */; };
 		EB41D0D111CAF3930018876A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0867D69BFE84028FC02AAC07 /* Foundation.framework */; };
 		EB41D1AF11CAF3E50018876A /* INI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* INI.framework */; };
 		EB41D1B711CAF4070018876A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41D1B611CAF4070018876A /* main.m */; };
@@ -49,6 +50,7 @@
 		32DBCF5E0370ADEE00C91783 /* INI_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INI_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* INI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = INI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB0DD7D41DCE615D00D7BFC1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		EB41D1A911CAF3DB0018876A /* ini */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ini; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB41D1B611CAF4070018876A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; tabWidth = 2; };
 		EB41D1B811CAF4320018876A /* INI.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.h; path = INI.h; sourceTree = "<group>"; tabWidth = 2; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB0DD7D51DCE615D00D7BFC1 /* AppKit.framework in Frameworks */,
 				EB41D0D111CAF3930018876A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +117,7 @@
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				EB84E9081DBD6564006B1E6E /* INI.framework Tests */,
 				034768DFFF38A50411DB9C8B /* Products */,
+				EB0DD7D31DCE615D00D7BFC1 /* Frameworks */,
 			);
 			name = INI;
 			sourceTree = "<group>";
@@ -170,6 +174,14 @@
 				32DBCF5E0370ADEE00C91783 /* INI_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		EB0DD7D31DCE615D00D7BFC1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB0DD7D41DCE615D00D7BFC1 /* AppKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		EB41D1B211CAF3EC0018876A /* ini */ = {

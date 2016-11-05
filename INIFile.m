@@ -4,7 +4,9 @@
 
 #import "INIFile.h"
 
-@implementation INIFile
+@implementation INIFile {
+	NSArrayController *entryController;
+}
 
 @synthesize entries;
 @synthesize lineEnding = _lineEnding;
@@ -15,6 +17,7 @@
 - (id) init {
   if (self = [super init]) {
     self.entries = [NSMutableArray array];
+		entryController = [[NSArrayController alloc] initWithContent:self.entries];
   }
   return self;
 }
@@ -46,16 +49,17 @@
 - (NSString*) contents {
   NSMutableString *contents_ = [[NSMutableString alloc] init];
 
-  for (int i = 0; i < entries.count; i++) {
-    INIEntry *entry = [entries objectAtIndex:i];
-    [contents_ appendFormat:@"%@%@", entry.line, (i < entries.count -1) ? _lineEnding : @""];
+  for (int i = 0; i < [entryController.arrangedObjects count]; i++) {
+    INIEntry *entry = [entryController.arrangedObjects objectAtIndex:i];
+    [contents_ appendFormat:@"%@%@", entry.line, (i < [entryController.arrangedObjects count] -1) ? _lineEnding : @""];
   }
 
   return contents_;
 }
 
 - (void) setContents: (NSString *) contents_ {
-  self.entries = [NSMutableArray array];
+	self.entries = [NSMutableArray array];
+	[entryController setContent:self.entries];
 
   // Determine newline: LF, CR, or CRLF
   NSRange firstLineEnd = [contents_ rangeOfCharacterFromSet:[NSCharacterSet newlineCharacterSet]];
@@ -72,7 +76,7 @@
   }
 	
   for (NSString *line in [contents_ componentsSeparatedByString:_lineEnding]) {
-    [self.entries addObject: [[INIEntry alloc] initWithLine: line]];
+    [entryController addObject: [[INIEntry alloc] initWithLine: line]];
   }
 }
 
@@ -87,7 +91,7 @@
 
 - (NSMutableArray *) valuesForKey: (NSString *) key {
   NSMutableArray *values = [NSMutableArray array];
-  for (INIEntry *entry in self.entries) {
+  for (INIEntry *entry in entryController.arrangedObjects) {
     if ([entry.key isEqualToString:key]) {
       [values addObject:entry.value];
     }
@@ -108,7 +112,7 @@
   NSMutableArray *values = [NSMutableArray array];
   NSString *currentSection = nil;
 
-  for (INIEntry *entry in self.entries) {
+  for (INIEntry *entry in entryController.arrangedObjects) {
     if ([entry.section isEqualToString:section]) {
       currentSection = entry.section;
     }
@@ -125,10 +129,10 @@
 	NSInteger sectionIndex = -1;
 	
 	// Find the section and entry to modify
-	for (INIEntry *entry in self.entries) {
+	for (INIEntry *entry in entryController.arrangedObjects) {
 		if ([entry.section isEqualToString:section]) {
 			currentSection = entry.section;
-			sectionIndex = [self.entries indexOfObject:entry];
+			sectionIndex = [entryController.arrangedObjects indexOfObject:entry];
 		}
 		if ([entry.key isEqualToString:key] && [currentSection isEqualToString:section]) {
 			updatingEntry = entry;
@@ -143,22 +147,22 @@
 
 	if (sectionIndex < 0) {
 		INIEntry *newSection = [INIEntry entryWithLine:[NSString stringWithFormat:@"[%@]", section]];
-		[self.entries addObject:newSection];
-		sectionIndex = [self.entries count] - 1;
+		[entryController addObject:newSection];
+		sectionIndex = [entryController.arrangedObjects count] - 1;
 	}
 	
 	updatingEntry = [INIEntry entryWithLine:[NSString stringWithFormat:@"%@ = %@", key, value]];
-	[self.entries insertObject:updatingEntry atIndex:sectionIndex+1];
+	[entryController insertObject:updatingEntry atArrangedObjectIndex:sectionIndex+1];
 }
 
 - (NSIndexSet *) sectionIndexes {
-  return [self.entries indexesOfObjectsPassingTest: ^(id entry, NSUInteger index, BOOL *stop) {
+  return [entryController.arrangedObjects indexesOfObjectsPassingTest: ^(id entry, NSUInteger index, BOOL *stop) {
     return (BOOL)([(INIEntry *)entry type] == INIEntryTypeSection);
   }];
 }
 
 - (NSArray *) sections {
-  return [self.entries objectsAtIndexes: [self sectionIndexes]];
+  return [entryController.arrangedObjects objectsAtIndexes: [self sectionIndexes]];
 }
 
 @end

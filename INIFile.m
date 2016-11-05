@@ -32,6 +32,16 @@
   return self;
 }
 
+- (BOOL) writeToFile: (NSString *) path_ atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc error:(NSError **)error {
+	
+	return [self.contents writeToFile:path_ atomically:useAuxiliaryFile encoding:enc error:error];
+}
+
+- (BOOL) writeToUTF8File: (NSString *) path_ atomically:(BOOL)useAuxiliaryFile error:(NSError **)error {
+
+	return [self writeToFile:path_ atomically:useAuxiliaryFile encoding:NSUTF8StringEncoding error:error];
+}
+
 - (NSString*) contents {
   NSMutableString *contents_ = [[NSMutableString alloc] init];
 

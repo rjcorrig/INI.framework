@@ -14,8 +14,6 @@
 // License: Apache 2.0 License
 //
 @interface INIFile : NSObject {
-  NSMutableArray *entries;
-  NSString *lineEnding;
 }
 
 @property (nonatomic, strong) NSMutableArray *entries;
@@ -27,6 +25,8 @@
 - (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error;
 - (id) initWithContentsOfFile: (NSString *) path encoding: (NSStringEncoding) encoding error: (NSError **) error;
 
+- (BOOL) writeToFile: (NSString *) path atomically:(BOOL)useAuxiliaryFile encoding:(NSStringEncoding)enc error:(NSError **)error;
+- (BOOL) writeToUTF8File: (NSString *) path atomically:(BOOL)useAuxiliaryFile error:(NSError **)error;
 
 - (NSIndexSet *) sectionIndexes;
 - (NSArray *) sections;

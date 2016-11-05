@@ -18,8 +18,19 @@
   if (self = [super init]) {
     self.entries = [NSMutableArray array];
 		entryController = [[NSArrayController alloc] initWithContent:self.entries];
+		[entryController addObserver:self forKeyPath:@"arrangedObjects" options:0 context:nil];
+		[entryController addObserver:self forKeyPath:@"arrangedObjects.line" options:0 context:nil];
   }
   return self;
+}
+
+- (void) dealloc {
+	[entryController removeObserver:self forKeyPath:@"arrangedObjects.line"];
+	[entryController removeObserver:self forKeyPath:@"arrangedObjects"];
+}
+
+- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+	NSLog(@"Received change for %@", keyPath);
 }
 
 - (id) initWithUTF8ContentsOfFile: (NSString *) path_ error: (NSError **) error {

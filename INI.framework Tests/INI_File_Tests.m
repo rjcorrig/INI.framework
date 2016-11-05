@@ -235,4 +235,24 @@
 	XCTAssertEqualObjects([config valueForKey:@"name" inSection:@"github"], @"rjcorrig");
 }
 
+- (void)testINIFile_writeFile {
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *path = [bundle pathForResource:@"test_write" ofType:@"ini"];
+	NSError *err;
+	
+	INIFile *srcConfig = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	XCTAssertNil(err);
+	XCTAssertNil([srcConfig valueForKey:@"newKey" inSection:@"newSection"]);
+	
+	[srcConfig setValue:@"newValue" forKey:@"newKey" inSection:@"newSection"];
+	XCTAssertEqualObjects([srcConfig valueForKey:@"newKey" inSection:@"newSection"], @"newValue");
+
+	[srcConfig writeToUTF8File:path atomically:YES error:&err];
+	
+	XCTAssertNil(err);
+
+	INIFile *destConfig = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
+	XCTAssertEqualObjects(destConfig.contents, srcConfig.contents);
+}
+
 @end

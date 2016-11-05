@@ -285,14 +285,4 @@
 	XCTAssertEqualObjects(destConfig.contents, srcConfig.contents);
 }
 
-- (void)testINIFile_writeFile_autosave_noPath {
-	
-	INIFile *srcConfig = [[INIFile alloc] init];
-	XCTAssertNil([srcConfig valueForKey:@"newKey" inSection:@"newSection"]);
-	
-	srcConfig.autosave = YES;
-	[srcConfig setValue:@"newValue" forKey:@"newKey" inSection:@"newSection"];
-	XCTAssertEqualObjects([srcConfig valueForKey:@"newKey" inSection:@"newSection"], @"newValue");	
-}
-
 @end

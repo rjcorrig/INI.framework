@@ -21,6 +21,7 @@
 @property (weak, readonly) NSString *lineEnding;
 @property (copy) NSString *path;
 @property (assign) NSStringEncoding encoding;
+@property (assign) BOOL autosave;
 
 - (id) initWithUTF8ContentsOfFile: (NSString *) path error: (NSError **) error;
 - (id) initWithContentsOfFile: (NSString *) path encoding: (NSStringEncoding) encoding error: (NSError **) error;

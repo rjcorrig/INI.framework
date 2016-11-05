@@ -10,6 +10,7 @@
 @synthesize lineEnding = _lineEnding;
 @synthesize path;
 @synthesize encoding;
+@synthesize autosave;
 
 - (id) init {
   if (self = [super init]) {

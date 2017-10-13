@@ -20,17 +20,22 @@
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	NSURL *source = [bundle URLForResource:@"test_lf" withExtension:@"ini"];
-	NSURL *dest = [[source URLByDeletingLastPathComponent] URLByAppendingPathComponent:@"test_write.ini"];
+	NSURL *dest = [[NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES] URLByAppendingPathComponent:@"test_write.ini"];
 	NSFileManager *fm = [[NSFileManager alloc] init];
 	
 	NSError *err;
-	[fm removeItemAtURL:dest error:&err];
 	[fm copyItemAtURL:source toURL:dest error:&err];
 	XCTAssertNil(err);
 }
 
 - (void)tearDown {
-	// Put teardown code here. This method is called after the invocation of each test method in the class.
+  NSURL *dest = [[NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES] URLByAppendingPathComponent:@"test_write.ini"];
+  NSFileManager *fm = [[NSFileManager alloc] init];
+  
+  NSError *err;
+  [fm removeItemAtURL:dest error:&err];
+  XCTAssertNil(err);
+
 	[super tearDown];
 }
 
@@ -236,8 +241,7 @@
 }
 
 - (void)testINIFile_writeFile {
-	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test_write" ofType:@"ini"];
+  NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"test_write.ini"];
 	NSError *err;
 	
 	INIFile *srcConfig = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
@@ -269,8 +273,7 @@
 }
 
 - (void)testINIFile_writeFile_autosave {
-	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSString *path = [bundle pathForResource:@"test_write" ofType:@"ini"];
+  NSString *path = [NSTemporaryDirectory() stringByAppendingPathComponent:@"test_write.ini"];
 	NSError *err;
 	
 	INIFile *srcConfig = [[INIFile alloc] initWithUTF8ContentsOfFile:path error:&err];
